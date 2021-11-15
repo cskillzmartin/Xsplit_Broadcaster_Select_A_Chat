@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://cdn2.xsplit.com/xjs/download/xjs.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+    <style>
+        body {
+            background-color: transparent;            
+        }
+
+        h1{
+            padding-left: 150px;    
+        }
+
+        .bottom{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius:35px;
+        }
+
+        img{
+        border: 2px solid;
+        position: fixed;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+        <ul id='list' class="list-unstyled">
+        </ul>
+    </div>
+    <script>
+        var xjs = require('xjs');
+        var Source = xjs.Source;
+        xjs.ready().then(Source.getCurrentSource).then(function(mySource) {
+            return mySource.setName('Select a chat');
+        });
+
+        function addCmt(cmt){
+            var parsd = JSON.parse(cmt);
+            $("#myTemplate").tmpl(parsd).appendTo("#list");
+        }    
+
+        $(document).ready(function(){
+            window.addEventListener('storage', function(event){          
+                if(window.localStorage.current){
+                    $('.jumbotron').remove();
+                    var cId = window.localStorage.current;
+                    var comment = window.localStorage.getItem(cId);
+                    addCmt(comment);
+                }else{
+                    $('.jumbotron').remove();
+                }        
+            });
+        });
+
+    </script> 
+   <script id="myTemplate" type="text/x-jquery-tmpl">
+   
+        <div class='jumbotron bottom'>           
+            <div class="panel-body">  
+                <img src='${userImage}' style="width:5%" class='img-circle'>              
+                <h1>
+                    ${userName} <small> ${comment}</small>
+                </h1>            
+            </div>
+        </div>      
+    </script>
+</body>
+</html>

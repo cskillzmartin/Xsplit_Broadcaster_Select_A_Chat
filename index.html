@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+    <script src="https://cdn2.xsplit.com/xjs/download/xjs.min.js"></script>
+    <style>
+      img{
+        border: 2px solid;
+        padding: 0;
+      }
+
+      p{
+        padding-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <!-- <button onclick="getPosts()">Get Comments</button> -->
+    </div>
+    <div id='tst'>
+      <ul id='comment' class="list-unstyled">
+      </ul>
+    </div>
+    <div id='tst2'>
+     
+    </div>   
+  <script>      
+    window.localStorage.clear();      
+    window.setInterval(getYTComments,1500);
+       
+  function getYTComments(){
+      $.ajax({
+              url:'https://www.youtube.com/live_chat?is_popout=1&v=91Wb1VKIDzI', 
+              method:'GET',
+              success: function(result){
+                var begin = result.indexOf('liveChatTextMessageRenderer');
+                var end = result.indexOf('actionPanel');
+
+                var chat ='{'+ result.substring(begin-103, end-2)+'}';
+                var jsn = JSON.parse(chat);
+
+                jsn.actions.forEach(e => {
+                
+                  try {
+                  var userName = e.addChatItemAction.item.liveChatTextMessageRenderer.authorName.simpleText;
+                  var userImage = e.addChatItemAction.item.liveChatTextMessageRenderer.authorPhoto.thumbnails[0].url;
+                  var message = e.addChatItemAction.item.liveChatTextMessageRenderer.message.runs[0].text;
+                  var cId = e.addChatItemAction.item.liveChatTextMessageRenderer.id; //btoa(userName + message + userImage);
+                  if(window.localStorage.getItem(cId) === null){
+                    var comment = {cId:cId, userName: userName, comment: message, userImage: userImage};
+                    addCmt(comment);  
+                    window.localStorage.setItem(cId, JSON.stringify(comment));
+                  }
+                 } catch (error) {
+                   
+                 }
+                  
+                });
+            }
+        });
+    }
+
+    function addCmt(cmt){
+      $("#comment").prepend($("#myTemplate").tmpl(cmt));
+    }    
+    function addCmt2(cmt){
+    $("#tst2").append(cmt);
+    }    
+
+    function writeCurrent(commentId){
+      window.localStorage.setItem('current', commentId.value);
+    }
+
+    function removeCurrent(){
+      window.localStorage.removeItem('current');
+    }
+   
+
+ </script>
+
+<script id="myTemplate" type="text/x-jquery-tmpl">
+  <li>
+    <div style='display:inline-block'>
+      <img src='${userImage}' style='font-size:50px;' class='img-circle'> 
+      <label class='control-label'>
+        ${userName}  <button class='btn btn-default' value='${cId}' onClick='writeCurrent(this)''>
+                      <span class='glyphicon glyphicon-plus'>
+                      </span>
+                    </button>
+                    <button class='btn btn-default' onClick='removeCurrent()'>
+                      <span class='glyphicon glyphicon-minus'>
+                      </span>
+                    </button>
+      </label>      
+          <p>${comment}</p>
+    </div>   
+  </li>
+</script>
+</body>
+</html>
