@@ -5,6 +5,7 @@
     <script src="https://cdn2.xsplit.com/xjs/download/xjs.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+    <script src="js/SelectAChatSource.js"></script>
     <style>
         body {
             background-color: transparent;            
@@ -41,27 +42,18 @@
             return mySource.setName('Select a chat');
         });
 
-        function addCmt(cmt){
-            var parsd = JSON.parse(cmt);
-            $("#myTemplate").tmpl(parsd).appendTo("#list");
-        }    
-
-        $(document).ready(function(){
-            window.addEventListener('storage', function(event){          
-                if(window.localStorage.current){
-                    $('.jumbotron').remove();
-                    var cId = window.localStorage.current;
-                    var comment = window.localStorage.getItem(cId);
-                    addCmt(comment);
-                }else{
-                    $('.jumbotron').remove();
-                }        
-            });
+        window.addEventListener('storage', function(event){          
+            if(window.localStorage.current){
+                $('.jumbotron').remove();
+                var cId = window.localStorage.current;
+                var comment = window.localStorage.getItem(cId);
+                addCmt(comment);
+            }else{
+                $('.jumbotron').remove();
+            }        
         });
-
     </script> 
    <script id="myTemplate" type="text/x-jquery-tmpl">
-   
         <div class='jumbotron bottom'>           
             <div class="panel-body">  
                 <img src='${userImage}' style="width:5%" class='img-circle'>              
