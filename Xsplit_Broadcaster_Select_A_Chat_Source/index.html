@@ -15,7 +15,6 @@
     </div>
     <script>
         var xjs = require('xjs');
-        var Source = xjs.Source;
         xjs.ready().then(Source.getCurrentSource).then(function(mySource) {
             return mySource.setName('Select a chat');
         });
