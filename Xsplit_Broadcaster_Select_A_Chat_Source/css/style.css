@@ -1,0 +1,21 @@
+body {
+    background-color: transparent;            
+}
+
+h1{
+    padding-left: 150px;    
+}
+
+.bottom{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius:35px;
+}
+
+img{
+    border: 2px solid;
+    position: fixed;
+    padding: 0;
+}

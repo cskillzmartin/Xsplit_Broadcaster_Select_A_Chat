@@ -2,35 +2,23 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
     <script src="https://cdn2.xsplit.com/xjs/download/xjs.min.js"></script>
     <script src="js/SelectAChatExtension.js"></script>
-    <style>
-      img{
-        border: 2px solid;
-        padding: 0;
-      }
-
-      p{
-        padding-bottom: 5px;
-      }
-    </style>
   </head>
   <body>
     <div>
-      <!-- <button onclick="getPosts()">Get Comments</button> -->
-    </div>
-    <div id='tst'>
       <ul id='comment' class="list-unstyled">
       </ul>
     </div>
-    <div id='tst2'>
-     
+    <div id='err'>     
     </div>   
   <script>      
     window.localStorage.clear();      
     $(document).ready(function(){
+      //getTestContent();
       window.setInterval(getYTComments,1500);
     });
     
