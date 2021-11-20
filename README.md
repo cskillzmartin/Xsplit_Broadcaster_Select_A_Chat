@@ -4,3 +4,4 @@ An Xsplit Broadcaster extension that allows the user to show individual YouTube 
 # Issues
 Extension does not support super chats.  
 Creator pinned live chat message will break extension.  
+Does not support changing the videoId in a properties menu, you must cahnge the videoID in code.  
