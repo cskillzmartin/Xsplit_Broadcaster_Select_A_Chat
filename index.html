@@ -3,41 +3,43 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css"/>
+    
+  </head>
+  <body>
+      <div>
+        <ul id='comment' class="list-unstyled">
+        </ul>
+      </div>
+      <div id='err'>     
+      </div>   
+
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
     <script src="https://cdn2.xsplit.com/xjs/download/xjs.min.js"></script>
     <script src="js/SelectAChatExtension.js"></script>
-  </head>
-  <body>
-    <div>
-      <ul id='comment' class="list-unstyled">
-      </ul>
-    </div>
-    <div id='err'>     
-    </div>   
-  <script>      
-    window.localStorage.clear();      
-    window.setInterval(getYTComments,1500);
-    //getTestContent();
-  </script>
+    <script>      
+      window.localStorage.clear();      
+      window.setInterval(getYTComments,1500);
+      //getTestContent();
+    </script>
 
-<script id="myTemplate" type="text/x-jquery-tmpl">
-  <li>
-    <div style='display:inline-block'>
-      <img src='${userImage}' style='font-size:50px;' class='img-circle'> 
-      <label class='control-label'>
-        ${userName}  <button class='btn btn-default' value='${cId}' onClick='writeCurrent(this)''>
-                      <span class='glyphicon glyphicon-plus'>
-                      </span>
-                    </button>
-                    <button class='btn btn-default' onClick='removeCurrent()'>
-                      <span class='glyphicon glyphicon-minus'>
-                      </span>
-                    </button>
-      </label>      
-          <p>${comment}</p>
-    </div>   
-  </li>
-</script>
-</body>
+    <script id="myTemplate" type="text/x-jquery-tmpl">
+      <li>
+        <div style='display:inline-block'>
+          <img src='${userImage}' style='font-size:50px;' class='img-circle'> 
+          <label class='control-label'>
+            ${userName}  <button class='btn btn-default' value='${cId}' onClick='writeCurrent(this)''>
+                          <span class='glyphicon glyphicon-plus'>
+                          </span>
+                        </button>
+                        <button class='btn btn-default' onClick='removeCurrent()'>
+                          <span class='glyphicon glyphicon-minus'>
+                          </span>
+                        </button>
+          </label>      
+              <p>${comment}</p>
+        </div>   
+      </li>
+    </script>
+  </body>
 </html>
