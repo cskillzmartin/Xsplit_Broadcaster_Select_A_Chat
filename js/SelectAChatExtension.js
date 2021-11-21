@@ -1,3 +1,7 @@
+window.localStorage.clear();      
+window.setInterval(getYTComments,1500);
+//getTestContent();
+
 function getTestContent(){
   $.ajax({
     url:'https://www.youtube.com/live_chat?is_popout=1&v=8NzYo0jmYek', 

@@ -7,27 +7,11 @@
     <body>
         <div id='msg'>
         </div>
+        
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
         <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
         <script src="https://cdn2.xsplit.com/xjs/download/xjs.min.js"></script>
         <script src="js/SelectAChatSource.js"></script>
-        <script>
-            var xjs = require('xjs');
-            xjs.ready().then(xjs.Source.getCurrentSource).then(function(mySource) {
-                return mySource.setName('Select a chat');
-            });
-
-            window.addEventListener('storage', function(event){          
-                if(window.localStorage.current){
-                    $('.jumbotron').remove();
-                    var cId = window.localStorage.current;
-                    var comment = window.localStorage.getItem(cId);
-                    addCmt(comment);
-                }else{
-                    $('.jumbotron').remove();
-                }        
-            });
-        </script> 
         <script id="myTemplate" type="text/x-jquery-tmpl">
             <div class='jumbotron bottom'>           
                 <div class="panel-body">  
