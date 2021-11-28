@@ -4,36 +4,37 @@ window.setInterval(getYTComments,1500);
 
 function getTestContent(){
   $.ajax({
-    url:'https://www.youtube.com/live_chat?is_popout=1&v=Pm1GbIq9_5k', 
+    url:'https://www.youtube.com/live_chat?is_popout=1&v=pEhaN770Npw', 
     method:'GET',
     success: function(result){
           
-          var begin = result.indexOf('liveChatTextMessageRenderer');
-          var end = result.indexOf('actionPanel');
-          var chat ='{'+ result.substring(begin-103, end-2)+'}';
-        addErr(chat);
+      var begin = result.indexOf('window["ytInitialData"] = ');
+      var end = result.indexOf(';</script><yt-live-chat-app>');
+      var chat = result.substring(begin+26, end);
+      var jsn = JSON.parse(chat);
+
+      addErr(JSON.stringify(jsn.contents.liveChatRenderer.actions));
       }
 });
 }
 
 function getYTComments(){
     $.ajax({
-            url:'https://www.youtube.com/live_chat?is_popout=1&v=Pm1GbIq9_5k', 
+            url:'https://www.youtube.com/live_chat?is_popout=1&v=pEhaN770Npw', 
             method:'GET',
             success: function(result){
               var jsn;
               try {
-                var begin = result.indexOf('liveChatTextMessageRenderer');
-                var end = result.indexOf('actionPanel');
+                var begin = result.indexOf('window["ytInitialData"] = ');
+                var end = result.indexOf(';</script><yt-live-chat-app>');
 
-                var chat ='{'+ result.substring(begin-103, end-2)+'}';
+                var chat = result.substring(begin+26, end);
                 jsn = JSON.parse(chat);
               } catch (error) {
                 addErr(error);
               }              
 
-              jsn.actions.forEach(e => {
-              
+              jsn.contents.liveChatRenderer.actions.forEach(e => {              
                 try {
                   var cId = e.addChatItemAction.item.liveChatTextMessageRenderer.id;                  
                   if(window.localStorage.getItem(cId) === null){
