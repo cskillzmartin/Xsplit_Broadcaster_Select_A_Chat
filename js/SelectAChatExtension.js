@@ -4,7 +4,7 @@ window.setInterval(getYTComments,1500);
 
 function getTestContent(){
   $.ajax({
-    url:'https://www.youtube.com/live_chat?is_popout=1&v=pEhaN770Npw', 
+    url:'https://www.youtube.com/live_chat?is_popout=1&v=5qap5aO4i9A', 
     method:'GET',
     success: function(result){
           
@@ -20,7 +20,7 @@ function getTestContent(){
 
 function getYTComments(){
     $.ajax({
-            url:'https://www.youtube.com/live_chat?is_popout=1&v=pEhaN770Npw', 
+            url:'https://www.youtube.com/live_chat?is_popout=1&v=5qap5aO4i9A', 
             method:'GET',
             success: function(result){
               var jsn;
