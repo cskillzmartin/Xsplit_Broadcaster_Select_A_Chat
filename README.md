@@ -1,6 +1,9 @@
 # Xsplit Broadcaster Select A Chat
 An Xsplit Broadcaster extension that allows the user to show individual YouTube live chat messages from viewers as stream source content.
 
+# Donate
+PayPal: https://www.paypal.me/AJMannTech
+
 # Issues
 Does not support changing the video ID in a properties menu, you must change the video ID in the SelectAChatExtension.js file.
 
