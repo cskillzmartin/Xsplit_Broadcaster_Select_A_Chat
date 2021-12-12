@@ -6,7 +6,6 @@ xjs.ready().then(xjs.Source.getCurrentSource).then(function(mySource) {
 
 window.addEventListener('storage', function(event){          
     if(window.localStorage.current){
-        $('.jumbotron').fadeOut();
         var cId = window.localStorage.current;
         var comment = window.localStorage.getItem(cId);
         addCmt(comment);
