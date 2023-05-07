@@ -4,6 +4,9 @@ body {
 
 h1{
     padding-left: 150px;    
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
 }
 
 .bottom{
@@ -19,3 +22,12 @@ img{
     position: fixed;
     padding: 0;
 }
+   
+  .img-circle {
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+    
+  small {
+    color: #666;
+  }
