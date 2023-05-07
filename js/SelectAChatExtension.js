@@ -84,7 +84,7 @@ function getYTComments(videoid){
     window.localStorage.setItem('current', commentId.value);
   }
 
-  function removeCurrent(){
-    window.localStorage.removeItem('current');
+  function remove(){
+    window.localStorage.setItem('remove', "-");
   }
  
