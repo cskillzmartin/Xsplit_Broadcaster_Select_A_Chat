@@ -1,5 +1,9 @@
 # Xsplit Broadcaster Select A Chat
-An Xsplit Broadcaster extension that allows the user to show individual YouTube live chat messages from viewers as stream source content. The video linked here is the closest thing I have to an overview. https://youtu.be/UwJOd8Vjer8
+An Xsplit Broadcaster extension that allows the user to show individual YouTube live chat messages from viewers as stream source content.
+This project has ~15 unique clones per month.
+If you are a user, please feel free to add feature requests as an issue https://github.com/cskillzmartin/Xsplit_Broadcaster_Select_A_Chat/issues. 
+I will work on them as they come in. 
+
 
 # Constraints  
 This plugin is structured the way it is because 
